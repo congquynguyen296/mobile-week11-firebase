@@ -1,4 +1,3 @@
-// MainActivity.java
 package com.congquynguyen.firebase;
 
 import android.content.Intent;
@@ -6,12 +5,13 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.viewpager2.widget.ViewPager2;
-
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import com.congquynguyen.firebase.model.Video;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -36,9 +36,9 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-        // Thiết lập ViewPager2
-        ViewPager2 vpager = findViewById(R.id.vpager);
-        vpager.setOrientation(ViewPager2.ORIENTATION_VERTICAL);
+        // Thiết lập RecyclerView
+        RecyclerView rvVideo = findViewById(R.id.rvVideo); // Sửa id từ vpager thành rvVideo
+        rvVideo.setLayoutManager(new LinearLayoutManager(this));
 
         // Thiết lập FirebaseRecyclerOptions
         FirebaseRecyclerOptions<Video> options = new FirebaseRecyclerOptions.Builder<Video>()
@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
             }
         };
 
-        vpager.setAdapter(adapter);
+        rvVideo.setAdapter(adapter); // Gắn adapter vào RecyclerView
 
         // Nút đăng xuất
         Button btnLogout = findViewById(R.id.btnLogout);
@@ -76,6 +76,15 @@ public class MainActivity extends AppCompatActivity {
             mAuth.signOut();
             startActivity(new Intent(this, LoginActivity.class));
             finish();
+        });
+
+        // Kiểm tra dữ liệu Firebase
+        videosRef.get().addOnSuccessListener(snapshot -> {
+            Log.d("FirebaseData", "Total videos: " + snapshot.getChildrenCount());
+            for (DataSnapshot child : snapshot.getChildren()) {
+                Video video = child.getValue(Video.class);
+                Log.d("FirebaseData", "Video title: " + video.getTitle());
+            }
         });
     }
 

@@ -38,6 +38,7 @@ dependencies {
     implementation(libs.material)
     implementation(libs.glide)
     implementation(libs.play.services.auth)
+    implementation(libs.exoplayer)
     implementation(libs.firebase.auth)
     implementation(libs.firebase.database)
     implementation(libs.firebase.database.ktx)

@@ -1,5 +1,6 @@
 [versions]
 agp = "8.9.0"
+exoplayer = "2.19.1"
 firebaseAuth = "21.1.0"
 firebaseBom = "31.2.3"
 firebaseDatabase = "20.1.0"
@@ -14,6 +15,7 @@ material = "1.12.0"
 playServicesAuth = "20.4.1"
 
 [libraries]
+exoplayer = { module = "com.google.android.exoplayer:exoplayer", version.ref = "exoplayer" }
 firebase-auth = { module = "com.google.firebase:firebase-auth", version.ref = "firebaseAuth" }
 firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebaseBom" }
 firebase-database = { module = "com.google.firebase:firebase-database", version.ref = "firebaseDatabase" }

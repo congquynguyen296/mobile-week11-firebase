@@ -44,6 +44,10 @@
         android:name=".LoginActivity"
         android:exported="false" />
 
+
+    <!-- Thêm VideoPlayerActivity -->
+    <activity android:name=".VideoPlayerActivity" />
+
 </application>
 
     </manifest>
