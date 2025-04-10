@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Hình chữ nhật nền -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#E0E0E0" /> <!-- Màu xám nhạt -->
+            <corners android:radius="4dp" />
+        </shape>
+    </item>
+    <!-- Dấu "X" ở giữa -->
+    <item>
+        <shape android:shape="line">
+            <stroke
+                android:width="2dp"
+                android:color="#757575" /> <!-- Màu xám đậm -->
+            <size
+                android:width="50dp"
+                android:height="50dp" />
+        </shape>
+    </item>
+    <item>
+        <rotate
+            android:fromDegrees="90"
+            android:toDegrees="90">
+            <shape android:shape="line">
+                <stroke
+                    android:width="2dp"
+                    android:color="#757575" />
+                <size
+                    android:width="50dp"
+                    android:height="50dp" />
+            </shape>
+        </rotate>
+    </item>
+</layer-list>
